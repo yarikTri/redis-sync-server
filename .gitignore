@@ -1,4 +1,3 @@
 /node_modules/
-/*.amrg
 
-automerge-repo-data
+.env

@@ -27,13 +27,20 @@ export class Server {
     this.#socket = new WebSocketServer({ noServer: true })
 
     const PORT =
-      process.env.PORT !== undefined ? parseInt(process.env.PORT) : 3030
+      process.env.LISTEN_PORT !== undefined ? parseInt(process.env.LISTEN_PORT) : 3030
     const app = express()
     app.use(express.static("public"))
 
+    const REDIS_PORT =
+      process.env.REDIS_PORT !== undefined ? parseInt(process.env.REDIS_PORT) : 6379
+    const REDIS_HOST =
+      process.env.REDIS_HOST !== undefined ? process.env.REDIS_HOST : 'localhost'
+    const REDIS_PASSWORD =
+      process.env.REDIS_PASSWORD !== undefined ? process.env.REDIS_PASSWORD : ''
+
     const config = {
       network: [new NodeWSServerAdapter(this.#socket)],
-      storage: new RedisStorageAdapter(),
+      storage: new RedisStorageAdapter(REDIS_PORT, REDIS_HOST, REDIS_PASSWORD),
       /** @ts-ignore @type {(import("@automerge/automerge-repo").PeerId)}  */
       peerId: `storage-server-${hostname}`,
       // Since this is a server, we don't share generously — meaning we only sync documents they already

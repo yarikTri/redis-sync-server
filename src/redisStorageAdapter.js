@@ -2,8 +2,8 @@
 import Redis from 'ioredis';
 
 export class RedisStorageAdapter {
-    constructor() {
-        this.redis = new Redis()
+    constructor(port, host, password) {
+        this.redis = new Redis(port, host, {password: password})
     }
 
     getRedisKey(keyArray, asPrefix = false) {
