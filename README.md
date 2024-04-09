@@ -8,6 +8,4 @@ Archipelago simple automerge-repo synchronization server. It pairs with the webs
 
 The server is configured with environment variables. There are these options:
 
-- `PORT` - the port to listen for websocket connections on
-# redis-sync-server
 # redis-sync-server
