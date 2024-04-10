@@ -4,6 +4,7 @@ import { WebSocketServer } from "ws"
 import { Repo } from "@automerge/automerge-repo"
 import { NodeWSServerAdapter } from "@automerge/automerge-repo-network-websocket"
 import os from "os"
+import cors from "cors"
 import { RedisStorageAdapter } from "./redisStorageAdapter.js"
 
 export class Server {
@@ -30,6 +31,7 @@ export class Server {
       process.env.LISTEN_PORT !== undefined ? parseInt(process.env.LISTEN_PORT) : 3030
     const app = express()
     app.use(express.static("public"))
+    app.use(cors())
 
     const REDIS_PORT =
       process.env.REDIS_PORT !== undefined ? parseInt(process.env.REDIS_PORT) : 6379
