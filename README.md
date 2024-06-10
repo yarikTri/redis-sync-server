@@ -1,11 +1,7 @@
-# Automerge Repo Sync Server
+# Redis Implementation of Automerge CRDT
 
-Archipelago simple automerge-repo synchronization server. It pairs with the websocket client protocol.
+Archipelago automerge-repo synchronization server. It pairs with the websocket client protocol.
 
-## Running the sync server
+## Running
 
 `yarn run start`
-
-The server is configured with environment variables. There are these options:
-
-# redis-sync-server
